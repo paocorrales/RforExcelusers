@@ -13,7 +13,8 @@
 
 <title>Welcome!</title>
 
-<script src="site_libs/jquery-3.5.1/jquery-3.5.1.min.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -59,6 +60,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="learnr_metadocencia.css" type="text/css" />
 
 
@@ -83,6 +85,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -308,7 +313,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -321,7 +326,7 @@ div.tocify {
   <a href="prepare.html">Before we start</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Topics
      
     <span class="caret"></span>
@@ -368,19 +373,38 @@ div.tocify {
 
 <div id="what-is-this-course-about" class="section level3">
 <h3>What is this course about?</h3>
-<p>This course is intended for <a href="personas.html">people</a> who use spreadsheets for data manipulation and have never programmed, but would like to learn how to work with R. Therefore its starts from the beginning: why use R? and where to start?</p>
-<p>We propose to work with R in an orderly and reproducible way. For this reason, we present a workflow that allows those who take this course to apply good programming practices, work collaboratively and present their work in a single document that includes the analysis and the results.</p>
-<p>Whenever we can, we will mention how what we propose to solve with R can also be done with spreadsheets and the advantages and disadvantages of each approach.</p>
-<p>In each section we include activities along with examples. We want these exercises to be realistic so that anyone can find similarities in their own data and can apply what they have learned to other situations.</p>
+<p>This course is intended for <a href="personas.html">people</a> who
+use spreadsheets for data manipulation and have never programmed, but
+would like to learn how to work with R. Therefore its starts from the
+beginning: why use R? and where to start?</p>
+<p>We propose to work with R in an orderly and reproducible way. For
+this reason, we present a workflow that allows those who take this
+course to apply good programming practices, work collaboratively and
+present their work in a single document that includes the analysis and
+the results.</p>
+<p>Whenever we can, we will mention how what we propose to solve with R
+can also be done with spreadsheets and the advantages and disadvantages
+of each approach.</p>
+<p>In each section we include activities along with examples. We want
+these exercises to be realistic so that anyone can find similarities in
+their own data and can apply what they have learned to other
+situations.</p>
 </div>
 <div id="before-we-start" class="section level3">
 <h3>Before we start</h3>
-<p>During this workshop we will use RStudio Cloud. If you want to use your computer we will use R and RStudio. Please <a href="prepare.html">follow these instructions to prepare for the workshop</a>.</p>
+<p>During this workshop we will use RStudio Cloud. If you want to use
+your computer we will use R and RStudio. Please <a
+href="prepare.html">follow these instructions to prepare for the
+workshop</a>.</p>
 </div>
 <div id="schedule" class="section level3">
 <h3>Schedule</h3>
 <p>This is a tentative time table.</p>
 <table>
+<colgroup>
+<col width="28%" />
+<col width="71%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Duration (minutes)</th>
@@ -390,7 +414,8 @@ div.tocify {
 <tbody>
 <tr class="odd">
 <td align="left">55</td>
-<td><a href="01-introduction.html">Introduction, reports, workflows</a></td>
+<td><a href="01-introduction.html">Introduction, reports,
+workflows</a></td>
 </tr>
 <tr class="even">
 <td align="left">5</td>
@@ -398,7 +423,8 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td align="left">55</td>
-<td><a href="02-reading-data.html">Reading</a> and <a href="03-plotting-data.html">Plotting</a></td>
+<td><a href="02-reading-data.html">Reading</a> and <a
+href="03-plotting-data.html">Plotting</a></td>
 </tr>
 <tr class="even">
 <td align="left">5</td>
@@ -423,26 +449,71 @@ div.tocify {
 <h3>Who are we?</h3>
 <p><strong>Yanina Bellini Saibene</strong></p>
 <p><img src="img/yani_circle.png" alt="Foto de Yani" width="100" height="100" align="left" style="margin:10px"/></p>
-<p>Yanina Bellini Saibene, MS. She is a tenured researcher at the National Institute of Agricultural Technology (INTA, Argentina). She applies computer and data science skills to bring technological developments to rural and underserved regions of Argentina. She coordinates the National Network of Agroecosystem Modeling at INTA. She also develops software to support research and education. She is a professor at undergraduate and graduate levels in several universities in Argentina and Uruguay, teaching applied Data Science and developed open courses and tutorials to teach technical skills in data management. She is a trainer and instructor for <a href="https://carpentries.org/">The Carpentries</a> and an <a href="https://education.rstudio.com/trainers/people/bellini_saibene+yanina/">RStudio</a> certified instructor. She has trained teachers since 1996 through the Federal Network of Continuous Teacher Training (National Ministry of Education, Argentina). She is co-founder and a Core Team member of <a href="http://metadocencia.org/">MetaDocencia</a>. She is part of the R-Ladies Global team, chair of several international conferences (user! 2021, LatinR, JAIIO), and an international keynote speaker. She also leads and participates in community translation of educational and technical material into Spanish, like Teaching Tech Together, R4DS, and The Carpentries Lessons.</p>
-<p><a href="https://yabellini.netlify.com/">yabellini.netlify.com</a></p>
+<p>Yanina Bellini Saibene, MS. She is the community manager of rOpenSci.
+She also develops software to support research and education. She is a
+professor at undergraduate and graduate levels in several universities
+in Argentina and Uruguay, teaching applied Data Science and developed
+open courses and tutorials to teach technical skills in data management.
+She is a trainer and instructor for <a
+href="https://carpentries.org/">The Carpentries</a> and an <a
+href="https://education.rstudio.com/trainers/people/bellini_saibene+yanina/">RStudio</a>
+certified instructor. She has trained teachers since 1996 through the
+Federal Network of Continuous Teacher Training (National Ministry of
+Education, Argentina). She is co-founder of <a
+href="http://metadocencia.org/">MetaDocencia</a>. She is part of the
+R-Ladies Global team, chair of several international conferences (user!
+2021, LatinR, JAIIO), and an international keynote speaker. She also
+leads and participates in community translation of educational and
+technical material into Spanish, like Teaching Tech Together, R4DS, and
+The Carpentries Lessons.</p>
+<p><a href="https://yabellini.netlify.com/">yabellini.netlify.com</a> |
+<a href="https://fosstodon.org/@yabellini">fosstodon.org/<span
+class="citation">@yabellini</span></a></p>
 <p><strong>Pao Corrales</strong></p>
-<p><img src="img/pao_circle.png" alt="Foto de Pao" width="100" height="100" align="left" style="margin:10px"/> Paola Corrales, MS. She is a Ph.D. student at the University of Buenos Aires. She studies atmospheric sciences applying data assimilation techniques to improve short-term forecasts of severe events in Argentina. She is a trainer and instructor for <a href="https://carpentries.org/">The Carpentries</a> and an <a href="https://education.rstudio.com/trainers/people/corrales+paola/">RStudio</a> certified instructor. She has also contributed to translations projects of Carpentries’ materials and the book Teaching Tech Together. She is part of Expedition Science, an Argentina-based NPO, where she leads educational projects such as science camps and workshops for students and K-12 science teachers. She is also on Expedition Science Board since 2013 and serves as its treasurer. She is a teacher assistant at the Atmosphere and Oceans Sciences at Buenos Aires University and a professor at the Data Sciences degree and postgraduate courses at Guillermo Brown University. She is co-founder and a Core Team member of <a href="http://metadocencia.org/">MetaDocencia</a>. She also develops openly licensed materials to teach and learn R from scratch.</p>
-<p><a href="https://github.com/paocorrales">paobcorrales.github.io</a> | <a href="https://twitter.com/PaobCorrales">@paobcorrales</a></p>
-<p><img src="img/hex_metadocencia.png" alt="Logo Metadocencia" width="100" height="110" align="left" style="margin:10px"/> Yani and Pao are part of MetaDocencia, a non-profit organization that nurtures a community of Spanish-speaking educators by teaching concrete, evidence-based, and student-centered educational methods. MetaDocencia collaboratively develops open, reusable, and accessible resources to foster effective training practices.</p>
-<p><a href="https://www.metadocencia.org/en/">MetaDocencia.org</a></p>
+<p><img src="img/pao_circle.png" alt="Foto de Pao" width="100" height="100" align="left" style="margin:10px"/>
+Paola Corrales, MS. She has a PhD from the University of Buenos Aires.
+She studies atmospheric sciences applying data assimilation techniques
+to improve short-term forecasts of severe events in Argentina. She is a
+trainer and instructor for <a href="https://carpentries.org/">The
+Carpentries</a> and an <a
+href="https://education.rstudio.com/trainers/people/corrales+paola/">RStudio</a>
+certified instructor. She has also contributed to translations projects
+of Carpentries’ materials and the book Teaching Tech Together. She is
+part of Expedition Science, an Argentina-based NPO, where she leads
+educational projects such as science camps and workshops for students
+and K-12 science teachers. She is also on Expedition Science Board since
+2013 and serves as its treasurer. She is a professor at the Data
+Sciences degree and postgraduate courses at Guillermo Brown University.
+She also develops openly licensed materials to teach and learn R from
+scratch.</p>
+<p><a href="https://github.com/paocorrales">paobcorrales.github.io</a> |
+<a href="https://fosstodon.org/@paocorrales">fosstodon.org/<span
+class="citation">@paocorrales</span></a></p>
 <hr />
 <div id="license" class="section level4">
 <h4>License</h4>
-<p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /> All materials in this course are under the license <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<p><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
+All materials in this course are under the license
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Creative
+Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 <p>We are inspired and based on the following resources:</p>
 <ul>
-<li><p><a href="https://swcarpentry.github.io/r-novice-gapminder/">R for Reproducible Scientific Analysis</a> by The Carpentries</p></li>
-<li><p><a href="https://rstudio-conf-2020.github.io/r-for-excel/">R for Excel Users</a> by Dr. Julie Stewart Lowndes and Dr. Allison Horst</p></li>
-<li><p><a href="https://r4ds.had.co.nz/">R for Data Science</a> by Hadley Wickham</p></li>
-<li><p><a href="https://paocorrales.github.io/deExcelaR/">de Excel a R</a> by Paola Corrales and Elio Campitelli</p></li>
-<li><p><a href="https://silvia.rbind.io/talk/2020-08-31-tour-of-the-tidyverse/">An Antarctic Tour of the Tidyverse</a> by Silvia Canelón</p></li>
+<li><p><a href="https://swcarpentry.github.io/r-novice-gapminder/">R for
+Reproducible Scientific Analysis</a> by The Carpentries</p></li>
+<li><p><a href="https://rstudio-conf-2020.github.io/r-for-excel/">R for
+Excel Users</a> by Dr. Julie Stewart Lowndes and Dr. Allison
+Horst</p></li>
+<li><p><a href="https://r4ds.had.co.nz/">R for Data Science</a> by
+Hadley Wickham</p></li>
+<li><p><a href="https://paocorrales.github.io/deExcelaR/">de Excel a
+R</a> by Paola Corrales and Elio Campitelli</p></li>
+<li><p><a
+href="https://silvia.rbind.io/talk/2020-08-31-tour-of-the-tidyverse/">An
+Antarctic Tour of the Tidyverse</a> by Silvia Canelón</p></li>
 </ul>
-<p>The source code for these materials and web page can be found at <a href="https://github.com/yabellini/fromSpreadSheetToR" class="uri">https://github.com/yabellini/fromSpreadSheetToR</a>.</p>
+<p>The source code for these materials and web page can be found at <a
+href="https://github.com/yabellini/fromSpreadSheetToR"
+class="uri">https://github.com/yabellini/fromSpreadSheetToR</a>.</p>
 </div>
 </div>
 

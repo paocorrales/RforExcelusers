@@ -13,7 +13,7 @@
 
 <title>Learner personas for the course</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -57,6 +57,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="learnr_metadocencia.css" type="text/css" />
 
 
@@ -81,6 +82,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -233,7 +237,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -246,7 +250,7 @@ $(document).ready(function () {
   <a href="prepare.html">Before we start</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Topics
      
     <span class="caret"></span>
@@ -291,11 +295,32 @@ $(document).ready(function () {
 </div>
 
 
-<p><em>from Spreadsheet to R</em> is intended for people who usespreadsheeets (Excel, Google sheets) for data manipulation and analysis but would like to learn how to use R. In particular we are thinking of:</p>
+<p><em>from Spreadsheet to R</em> is intended for people who
+usespreadsheeets (Excel, Google sheets) for data manipulation and
+analysis but would like to learn how to use R. In particular we are
+thinking of:</p>
 <ul>
-<li><p><strong>Naomi:</strong> she is doing a PhD in genetics. Has been analyzing data with Excel for almost ten years. Is going to run 300 experiments in the next six months. Doesn’t want to have to do all the analyses by hand. And wants nicer charts for her thesis than she can produce in Excel.</p></li>
-<li><p><strong>Andrea:</strong> has been working for many years analyzing crops, yields and prices from data she receives in spreadsheets. They handles Excel very well and although they has to start every analysis from scratch and need to copy tables and plots to word for the reports they need to build, they has a lot of practice. They hear about R and they thinks it can be useful to automate they workflow, but at the same time it is a challenge to change the way they has always been working.</p></li>
-<li><p><strong>Rodrigo:</strong> works with data in Google Sheets, because he edit the files with other people. Is not as experienced and often makes mistakes that force him to start the analysis over again. At the same time he is afraid of losing the original data and ends up download and saving into disck many versions of the same file. He wants to learn to program but does not know whether to start using R or Python and whether he will be able to solve the problems he has with Google Sheets with either of these tools.</p></li>
+<li><p><strong>Naomi:</strong> she is doing a PhD in genetics. Has been
+analyzing data with Excel for almost ten years. Is going to run 300
+experiments in the next six months. Doesn’t want to have to do all the
+analyses by hand. And wants nicer charts for her thesis than she can
+produce in Excel.</p></li>
+<li><p><strong>Andrea:</strong> has been working for many years
+analyzing crops, yields and prices from data she receives in
+spreadsheets. They handles Excel very well and although they has to
+start every analysis from scratch and need to copy tables and plots to
+word for the reports they need to build, they has a lot of practice.
+They hear about R and they thinks it can be useful to automate they
+workflow, but at the same time it is a challenge to change the way they
+has always been working.</p></li>
+<li><p><strong>Rodrigo:</strong> works with data in Google Sheets,
+because he edit the files with other people. Is not as experienced and
+often makes mistakes that force him to start the analysis over again. At
+the same time he is afraid of losing the original data and ends up
+download and saving into disck many versions of the same file. He wants
+to learn to program but does not know whether to start using R or Python
+and whether he will be able to solve the problems he has with Google
+Sheets with either of these tools.</p></li>
 </ul>
 
 
