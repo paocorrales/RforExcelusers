@@ -1,12 +1,14 @@
 ---
 title: "Gentoo Penguins"
-output: html_document
+format: html
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, 
-                      message = FALSE,
-                      warning = FALSE)
+```{r}
+#| label: setup
 
 library(tidyverse)
 library(readxl)
@@ -16,7 +18,9 @@ library(readxl)
 
 The **Palmer Penguins** data were collected and made available by Dr. Kristen Gorman and the [Palmer Station, Antarctica LTER](https://pal.lternet.edu/), a member of the Long Term Ecological Research Network. The data set includes several characteristics from Adelie, Chinstrap and Gentoo penguins. 
 
-```{r read}
+```{r}
+#| label: read-data
+
 penguins <- read_csv("data/penguins.csv")
 
 summary <- penguins %>% 
