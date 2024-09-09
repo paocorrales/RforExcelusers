@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: "docs"
+
+website:
+  title: "R for Excel users"
+  navbar:
+    left: 
+      - text: Before we start
+        href: prepare.html
+      - text: Topics
+        menu: 
+          - text: Introduction and Reports
+            href: 01-introduction.html
+          - text: Reading Data
+            href: 02-reading-data.html
+          - text: Plotting Data
+            href: 03-plotting-data.html
+          - text: Data manipulation
+            href: 04-data-manipulation.html
+          - text: Reporting your work
+            href: 05-reports.html
+      - text: Example
+        href: penguins_report.html
+    right:
+      - text: Repo
+        href: https://github.com/paocorrales/RforExcelusers
+format:
+  html:
+    theme: 
+      - flatly
+      - styles.scss
+    mainfont: Commissioner
+    monofont: "Fira Code"
+   
