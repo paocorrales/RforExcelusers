@@ -1,0 +1,62 @@
+---
+title: "Welcome!"
+---
+
+### What is this course about?
+
+This course is intended for [people](personas.html) who use spreadsheets for data manipulation and would like to learn how to work with R. Therefore its starts from the beginning: why use R? and where to start?
+
+We propose to work with R in an orderly and reproducible way. For this reason, we present a workflow that allows those who take this course to apply good programming practices, work collaboratively and present their work in a single document that includes the analysis and the results using Quarto.
+
+Whenever we can, we will mention how what we propose to solve with R can also be done with spreadsheets and the advantages and disadvantages of each approach.
+
+We'll start with an example of a short report to show all the things you can do with R. Then you learn how to read data into R, create tables and visualizations to reproduce the same example. At the end, you'll be able to create a report in different formats and share it with others.
+
+### Before we start
+
+During this workshop we will use and RStudio project. You can work locanly from your computer or use Posit Cloud (an RStudio version in the cloud). Please [follow these instructions to prepare for the workshop](prepare.html).
+
+### Schedule
+
+This is a tentative time table. 
+
+|Duration (minutes) |Topics|
+|:---|----------|
+|45  | [Introduction, reports, workflows](01-introduction.html) |
+|15  | [Reading data](02-reading-data.html) |
+|30  | [Plotting data](03-plotting-data.html) |
+|30   | Break |
+|45  | [Data manipulation](04-data-manipulation.html) |
+|30  | [Reporting your work](05-reports.html) |
+|15 | Q&A and goodbye |
+
+### Hi! 
+
+**I'm Pao Corrales**
+
+<img src="img/pao_circle.png" alt="Foto de Pao" width="100" height="100" align="left" style="margin:10px"/> I have a PhD in atmospheric sciences from the University of Buenos Aires. I worked in atmospheric sciences applying data assimilation techniques to improve short-term forecasts of severe events in Argentina and I'm currently working at Monash University exploring extremes in climate and weather in Australia. I'm trainer and instructor for [The Carpentries](https://carpentries.org/) and an [RStudio](https://education.rstudio.com/trainers/people/corrales+paola/) certified instructor. I'm also part of Expedition Science, an Argentina-based NPO, where she leads educational projects such as science camps and workshops for students and K-12 science teachers. I'm a professor at the Data Sciences degree at Austral University and I develop openly licensed materials to teach and learn R from scratch. 
+
+[paobcorrales.github.io](https://github.com/paocorrales) | [fosstodon.org/@paocorrales](https://fosstodon.org/@paocorrales)
+
+___
+
+#### License
+
+<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />
+All materials in this course are under the license <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.es_ES">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+This material is an updated version of [From spreadsheets to R](https://yabellini.github.io/fromSpreadSheetToR/index.html).
+
+We are inspired and based on the following resources:
+
+* [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/) by The Carpentries
+
+* [R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/) by Dr. Julie Stewart Lowndes and Dr. Allison Horst
+
+* [R for Data Science](https://r4ds.had.co.nz/) by Hadley Wickham
+
+* [de Excel a R](https://paocorrales.github.io/deExcelaR/) by Paola Corrales and Elio Campitelli
+
+* [An Antarctic Tour of the Tidyverse](https://silvia.rbind.io/talk/2020-08-31-tour-of-the-tidyverse/) by Silvia Canelón
+
+The source code for these materials and web page can be found at https://github.com/yabellini/fromSpreadSheetToR.
