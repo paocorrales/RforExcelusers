@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -196,77 +162,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="why-r" class="level2">
-<h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
-<p>Spreadsheets are an admirable software. They are great for data entry, for viewing raw data and for making quick charts. If you have been using it for a long time, you must have learned a lot of tricks to get the most out of it; things like formulas, pivot tables, and even macros. But surely you also suffered from its limitations.</p>
-<p>In a spreadsheet there is no clear boundary between data and analysis. Overwriting data is a very real danger and complicated analyses are very hard to understand, especially if you open a spreadsheet put together by someone else (who may be you from the past). Also, repeating an analysis on different data or with different parameters can become very cumbersome.</p>
-<p>If what you need are frequent and automatic reports, and data analysis with many moving parts, it would be nice to be able to write a recipe-like step-by-step set of instructions and have the computer run everything automatically every time you ask it to. To be able to do that, that step-by-step has to be written in a language that the computer can understand, R is one of that languages.</p>
-</section>
-<section id="how-are-we-going-to-work" class="level2">
-<h2 class="anchored" data-anchor-id="how-are-we-going-to-work">How are we going to work?</h2>
-<p>We are going to use R as a language and RStudio as an IDE, a Integrated Development Environment. If you don’t have these installed on your computer don’t worry, we have this <a href="https://rstudio.cloud/project/3174865">RStudio Cloud project</a> for you to work with.</p>
-<p>To launch RStudio, double-click on the RStudio icon. Launching RStudio also launches R (actually you will probably never open R by itself).</p>
-<p><img src="img/rstudio-principal.png" alt="RStudio main screen. Console, enviroment and Files panels"></p>
-<p><img src="img/rstudio-cloud-principal.png" alt="RStudio Cloud main screen. Console, enviroment and Files panels"></p>
-<p>Notice the default panes:</p>
-<ul>
-<li>Console (entire left)</li>
-<li>Environment/History (tabbed in upper right)</li>
-<li>Files/Plots/Packages/Help (tabbed in lower right)</li>
-</ul>
-<p>We don’t need to know how to use all of this right away. We will become familiar with more of the options and capabilities throughout the workshop.</p>
-<p>We can write code, that is, instructions to be executed by R on the Console. For example we can calculate the result two plus two by writing</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-</div>
-<p>on the Console and pressing enter.</p>
-<p>The result appears right below. We can also save that result to an object, in this case called <code>x</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>That little arrow is the <em>assignment operator</em> and works as an <code>=</code>. Now the result is saved on the Environment as a variable with name <code>x</code> and is not printed on the console.</p>
-<p>This is great when we are trying out code to see if it works but we’ll lose everything when we close RStudio. What we need to do is to save the code that generates your analysis. For that we use R Scripts and RMarkdown files.</p>
-<p>We are going to have our first experience with R through RMarkdown, so let’s see what an RMarkdown document is. We prepared <a href="penguins_report.Rmd">this example report</a> for you, please open it on RStudio or in RStudio Cloud. The file will appear on a new forth panel on the left-hand side of the screen, and the console panel will move to bottom.</p>
-</section>
-<section id="rmarkdown" class="level2">
-<h2 class="anchored" data-anchor-id="rmarkdown">RMarkdown</h2>
-<p>An RMarkdown file is a plain text file, with some rules and special syntax that allow us to write code and text together. When it is “knited,” the code will be evaluated and executed and the text formatted so that it creates a reproducible report or document that is nice to read and contains all your work.</p>
-<p>This is really critical to reproducibility. It also saves us time and can help with automation tasks. This document will recreate your figures for you in the same document where you are writing the text that explain them. This will save you the effort of doing some analysis, saving a plot on a file, copy-pasting that plot into Word or Power Point or Google Slides, and having to do it all over again after discovering a typo.</p>
-<p>Now let’s see how our Penguins Report looks like.</p>
-<ul>
-<li>The top part has the Title and the output type (which in this case is an HTML document).</li>
-<li>Below that there are alternating <em>white</em> and <em>grey</em> sections. These are the two main sections that make up an RMarkdown file: * Grey sections are R code * White sections are Markdown text</li>
-<li>There is black, blue text and green text.</li>
-</ul>
-<blockquote class="blockquote">
-<p>Let’s go ahead and “Knit” the document by clicking the blue yarn (<img src="img/knit-boton.png">) at the top of the RMarkdown file.</p>
-</blockquote>
-<p>We’ve just made an html file! This is a single webpage that we are viewing locally on our own computers. By knitting this RMarkdown document, R has formatted the markdown text and ran the R code.</p>
-<p><img src="img/markdown-knit.png" alt="Rmarkdown in the left. Knit document on the rigth"></p>
-<section id="markdown-text" class="level3">
-<h3 class="anchored" data-anchor-id="markdown-text">Markdown text</h3>
-<p>You can get a guide to rmarkdown <a href="add link">in this</a> cheat sheet, but here is a minimum syntax to get you started:</p>
-<ul>
-<li>headers start with <code>#</code>or <code>##</code>and so on (it’s important to put a space after the last <code>#</code>).</li>
-<li>bold words are surrounded with <code>**</code></li>
-<li>and italics, with <code>_</code></li>
-</ul>
-</section>
-<section id="r-code" class="level3">
-<h3 class="anchored" data-anchor-id="r-code">R Code</h3>
-<p>The R code is written inside code “chunks”. Code chunks start with <code>```{r label}</code> (where “label” is an optional, unique name) and end with <code>```</code>. In RStudio, you can create a new chunk with the <code>Ctrl + Alt + I</code> keboard shortcut.</p>
-<p>This report shows information about the Gentoo penguins but we could change a few code lines to create the same analysis for the other two species, Adelie and Chinstrap.</p>
-<blockquote class="blockquote">
-<p>Now is your turn. Go ahead and look through the code, if you find any mention of <code>"gentoo"</code>, change it to any of the other species.</p>
-</blockquote>
-<p>This task is a bit cumbersome if you have to change many things any time we want to re-run the analysis for different species. But don’t worry, we’ll learn how to make everything more automatic by the end of the workshop.</p>
+<p>The material will magically appear here a few days before the workshop!</p>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -196,77 +162,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="about-palmerpenguins" class="level2">
-<h2 class="anchored" data-anchor-id="about-palmerpenguins">About palmerpenguins</h2>
-<p>It’s time to present the data set we are using. The <strong>Palmer Penguins</strong> data were collected and made available by Dr.&nbsp;Kristen Gorman and the <a href="https://pal.lternet.edu/">Palmer Station, Antarctica LTER</a>, a member of the Long Term Ecological Research Network. The data set includes several characteristics from Adelie, Chinstrap and Gentoo penguins. You can read more about it on the <a href="https://allisonhorst.github.io/palmerpenguins/">palmerpenguins Documentation</a>.</p>
-<p>These data are available in R by installing the palmerpenguins package, but because we want to learn how to read data into R, we are gonig to read them from csv and xls files.</p>
-</section>
-<section id="reading-csv-files" class="level2">
-<h2 class="anchored" data-anchor-id="reading-csv-files">Reading csv files</h2>
-<p>We’ll start by loading the <strong>tidyverse</strong> package, which gives us access to dozens of functions to work with. For know we’ll use the <code>read_csv()</code> function to read a csv file that is stored in the data directory.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/penguins.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 344 Columns: 8
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (3): species, island, sex
-dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-<p>In Excel or Google Sheets, data are stored in the spreadsheet and organized in cells. In R, they are stored in objects. When we read a csv file, the data goes directly to the <code>penguins</code> data frame and it’s ready to be used. In the Environment panel we can see the <code>penguins</code> object, if we click that object the data will open in a new tab fro us to take a look.</p>
-<p><img src="img/view_in_rstudio.png" alt="RStudio tab with penguin data after View() function is call"></p>
-<p>This view is the most similar to the one we have in a spreadsheet. We can get to this panel by running <code>View(penguins)</code> on the console There are several other function to look at our data. Let’s use one of them</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 344
-Columns: 8
-$ species           &lt;chr&gt; "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A…
-$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
-$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
-$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
-$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
-$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
-$ sex               &lt;chr&gt; "male", "female", "female", NA, "female", "male", "f…
-$ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
-</div>
-</div>
-<p>This output is different and give us information about the type of data in each column (or variable).</p>
-<p>Sometimes our data is not so friendly and we need to give more information to the function to be able to read the data properly. You can find these options by looking into the function’s documentation.</p>
-<blockquote class="blockquote">
-<p>Go ahead and write <code>?read_csv()</code> on the console. What is the name of the option to change the default delimitator?</p>
-</blockquote>
-</section>
-<section id="reading-xls-files" class="level2">
-<h2 class="anchored" data-anchor-id="reading-xls-files">Reading xls files</h2>
-<p>What about xls files? For that we’ll need differnet R package, <strong>readxl</strong> that is already installed on the RStudio Cloud project. In this case the function is called <code>read_excel()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>penguins_xls <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/penguins.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>And that’s it, we’ve read an xls file. Of course, we sometimes have to work with files with multiple sheets or data that is no very organised. This functions comes with several options or arguments to read specific sheets (<code>sheet = &lt;name of the sheet&gt;</code>) or a specific range (<code>range = "C1:E7"</code>) and others.</p>
-<p>Now that we have the data read into R, it’s time to do some analysis.</p>
+<p>The material will magically appear here a few days before the workshop!</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

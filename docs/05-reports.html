@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -196,75 +162,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The first example report we saw was rendered into an html file. But what about Word or PDF files, which can be more usefull or expected in some situations?. RMarkdown, and a whole ecosystem of other packages, allows you to generate documents in multiple formats using the same plain text file.</p>
-<p>The way you generate the output file format is by changing the <code>output</code> option on the header.</p>
-<blockquote class="blockquote">
-<p>Go back to the example report and find the line that starts with <code>output:</code>. Change <code>html_document</code> to <code>pdf_document</code>.</p>
-</blockquote>
-<p>You can also use the “knit” button, clicking on the little arrow on the right to see all the options.</p>
-<blockquote class="blockquote">
-<p>Now se the button to generate a word document. What changes do you see on the heather of the file?</p>
-</blockquote>
-<section id="code-control" class="level2">
-<h2 class="anchored" data-anchor-id="code-control">Code control</h2>
-<p>Our example looks quite tidy. We’ve hidden all the code and R messages so you can concentrate your attention on the table and figures. But this is not the default behaviour of an Rmd file. Usually the output will have both code and output, which is fine when you or the person that will read the report wants to see the code that generates those results, but it might not be what the final audience of the report might need. It’s up to you to decide if you want to show the code or not.</p>
-<p>To change the options of a chunk code, all you have to do is list the options inside the square brackets. For example:</p>
-<pre><code>```{r nombre-del-chunk, echo = FALSE, message = FALSE}
-
-```</code></pre>
-<p>A particularly important set of options are the ones that control whether the code is executed and whether the result of the code will remain in the report or not:</p>
-<ul>
-<li><p><code>eval = FALSE</code> prevents the chunk code from being run, so it will not display results either. It is useful for displaying example code if you are writing, for example, a document to teach R.</p></li>
-<li><p><code>echo = FALSE</code> runs the chunk code and displays the results, but hides the code in the report. This is useful for writing reports for people who do not need to see the R code that generated the graph or table.</p></li>
-<li><p><code>include = FALSE</code> runs the code but hides both the code and the results. It is useful to use in general configuration chunks where you load libraries.</p></li>
-</ul>
-<p>If you are writing a report where you don’t want any code to be shown, adding <code>echo = FALSE</code> to each new chunk becomes tedious. The solution is to change the option globally so that it applies to all chunks. This is done by the <code>knitr::opts_chunk$set()</code> function, which sets the global options of the chunks that follow it. You’ll find this function on the first “setup” chunk.</p>
-<pre><code>```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, 
-                  message = FALSE,
-                  warning = FALSE)
-```</code></pre>
-<blockquote class="blockquote">
-<p>Curious about how the options works? Change them one at a time and knit the file each time to see what changes.</p>
-</blockquote>
-</section>
-<section id="automatisation" class="level2">
-<h2 class="anchored" data-anchor-id="automatisation">Automatisation</h2>
-<p>At the beginning of this workshop we asked you to change the penguin species in the example report. The task was not easy because “Gentoo” appears several times and it is easy to make a mistake. Parameterising a report allows us to define those kind of parameters in just one place and get different analyses from the same file.</p>
-<p>To generate a parameterised report you have to add an element called <code>params</code> to the header with the list of parameters and their default values.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">species</span><span class="kw">:</span><span class="at"> gentoo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>From now on, you’ll have access to a variable called <code>params</code> which is a list containing the parameters and their value. To access the value of each parameter you use the <code>$</code> operator as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>params<span class="sc">$</span>species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Gentoo"</code></pre>
-</div>
-</div>
-<p>In this way, the original code can be modified to use the value of the specie stored in <code>params$species</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> params<span class="sc">$</span>species) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm, <span class="at">y =</span> bill_depth_mm)) <span class="sc">+</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkorange"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"darkorange"</span>) <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Penguin bill dimensions"</span>,</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="fu">paste</span>(<span class="st">"Bill length and depth for"</span>, params<span class="sc">$</span>specie, <span class="st">"Penguins at Palmer Station LTER"</span>),</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Bill length (mm)"</span>,</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Bill depth (mm)"</span>,</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Penguin species"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Here we changed the subtitle to concatenate words with the value stored in <code>params$species</code>, this way we can construct the subtitle pragmatically.</p>
-<p>Now the report is ready to function as a parameterised report!</p>
-<blockquote class="blockquote">
-<p>Finally, change “Gentoo” on the yaml to generate a new report for one of the other species.</p>
-</blockquote>
+<p>The material will magically appear here a few days before the workshop!</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
