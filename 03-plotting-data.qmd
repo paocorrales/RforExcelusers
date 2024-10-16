@@ -1,11 +1,12 @@
 ---
 title: "Plotting Data"
-output: 
-  html_document:
-    code_download: true
+format: 
+  html:
     toc: true
-    toc_float: false
-    highlight: tango
+    toc-location: left
+    code-tools: 
+      source: true
+    highlight-style: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +20,7 @@ library(tidyverse)
 penguins <- read_csv("data/penguins.csv")
 ```
 
-Visualising data is useful not only to explore the data and identify the relationship between different variables, but also to communicate the result of the analysis. The **ggplot2** package allows us you to generate high quality plots in just a few lines of code. Any ggplot plot will have at least 3 components: the **data**, a **coordinate system** and a **geometry** (the visual representation of the data) and will be built in layers.
+Visualising data is useful not only to explore the data and identify the relationship between different variables, get results and also to communicate the result of the analysis. The **ggplot2** package allows us you to generate high quality plots in just a few lines of code. Any ggplot plot will have at least 3 components: the **data**, a **coordinate system** and a **geometry** (the visual representation of the data) and will be built in layers.
 
 Let's start by making plots!
 
@@ -46,7 +47,7 @@ ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm)) +
 
 We have our first plot! 
 
-You may have noticed that the dots are clustered in groups. Perhaps some other variable explains this behaviour. 
+You may have noticed that the dots are clustered in groups. Perhaps some other variable explains this behavior. 
 
 To include information from other variables in our plot we can take advantage of the aesthetic characteristics of the geometries. In this case, we can "paint" the points according to the penguin species. 
 
@@ -77,7 +78,7 @@ For now we used the default ggplot look. We could change the look of your plot t
 
 Let's start with colour. To change the aesthetic appearance of a plot element, we add a new layer with the `scale_*` function. In this case we'll use `scale_color_manual()` to choose the colours of the points manually. We could also use previously defined colour palettes like Viridis or Color Brewer. 
 
-We'll need 3 colors for the 3 species, let's use `"darkorange"`, `"purple"` and `"cyan4"` following the beautiful visualizations made by Allison Horst.
+We'll need 3 colors for the 3 species, let's use `"darkorange"`, `"purple"` and `"cyan4"`.
 
 ```{r}
 ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = bill_depth_mm)) +
