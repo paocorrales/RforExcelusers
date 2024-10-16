@@ -1,11 +1,12 @@
 ---
 title: "Reporting your work"
-output: 
-  html_document:
-    code_download: true
+format: 
+  html:
     toc: true
-    toc_float: false
-    highlight: tango
+    toc-location: left
+    code-tools: 
+      source: true
+    highlight-style: tango
 ---
 
 ```{r setup, include=FALSE}
@@ -15,43 +16,44 @@ chunk <- "```"
 ```
 
 
-The first example report we saw was rendered into an html file. But what about Word or PDF files, which can be more usefull or expected in some situations?. RMarkdown, and a whole ecosystem of other packages, allows you to generate documents in multiple formats using the same plain text file.
+The first example report we saw was rendered into an html file. But what about Word or PDF files, which can be more useful or expected in some situations?. Quarto allows you to generate documents in multiple formats using the same plain text file.
 
-The way you generate the output file format is by changing the `output` option on the header.
+The way you generate the output file format is by changing the `format` option on the header.
 
-> Go back to the example report and find the line that starts with `output:`. Change `html_document` to `pdf_document`.
-
-You can also use the "knit" button, clicking on the little arrow on the right to see all the options. 
-
-> Now se the button to generate a word document. What changes do you see on the heather of the file?
+> Go back to the example report and find the line that starts with `format:`. Change `html` to `pdf`.
+>
+> Now try to Render the file into a word document. Use `docx`. 
 
 ## Code control
 
-Our example looks quite tidy. We've hidden all the code and R messages so you can concentrate your attention on the table and figures. But this is not the default behaviour of an Rmd file. Usually the output will have both code and output, which is fine when you or the person that will read the report wants to see the code that generates those results, but it might not be what the final audience of the report might need. It's up to you to decide if you want to show the code or not. 
+Our example looks quite tidy. We've hidden all the code and R messages so you can concentrate your attention on the table and figures. But this is not the default behavior of an qmd file. Usually the output will have both code and output, which is fine when you or the person that will read the report wants to see the code that generates those results, but it might not be what the final audience of the report might need. It's up to you to decide if you want to show the code or not. 
 
-To change the options of a chunk code, all you have to do is list the options inside the square brackets. For example:
+To change the options of a chunk code, all you have to do is list the options using `#|` at the beginning of the line. For example:
 
-    `r chunk`{r nombre-del-chunk, echo = FALSE, message = FALSE}
-    
+    `r chunk`{r}
+     #| label: nombre-del-chunk
+     #| echo: false
+     #| message: false
     `r chunk`
 
 A particularly important set of options are the ones that control whether the code is executed and whether the result of the code will remain in the report or not:
 
-* `eval = FALSE` prevents the chunk code from being run, so it will not display results either. It is useful for displaying example code if you are writing, for example, a document to teach R.
+* `eval: false` prevents the chunk code from being run, so it will not display results either. It is useful for displaying example code if you are writing, for example, a document to teach R.
 
-* `echo = FALSE` runs the chunk code and displays the results, but hides the code in the report. This is useful for writing reports for people who do not need to see the R code that generated the graph or table.
+* `echo: false` runs the chunk code and displays the results, but hides the code in the report. This is useful for writing reports for people who do not need to see the R code that generated the graph or table.
 
-* `include = FALSE` runs the code but hides both the code and the results. It is useful to use in general configuration chunks where you load libraries.
+* `include: false` runs the code but hides both the code and the results. It is useful to use in general configuration chunks where you load libraries.
 
-If you are writing a report where you don't want any code to be shown, adding `echo = FALSE` to each new chunk becomes tedious. The solution is to change the option globally so that it applies to all chunks. This is done by the `knitr::opts_chunk$set()` function, which sets the global options of the chunks that follow it. You'll find this function on the first "setup" chunk.
+If you are writing a report where you don't want any code to be shown, adding `echo: false` to each new chunk becomes tedious. The solution is to change the option globally so that it applies to all chunks. This is done by adding the same options in the header under `execute`.
 
-    `r chunk`{r setup, include = FALSE}
-    knitr::opts_chunk$set(echo = FALSE, 
-                      message = FALSE,
-                      warning = FALSE)
-    `r chunk`
+```yaml
+execute:
+  echo: false
+  warning: false
+  message: false
+```
     
-> Curious about how the options works? Change them one at a time and knit the file each time to see what changes.
+> Curious about how the options works? Change them one at a time and render the file each time to see what changes.
 
 ## Automatisation
 
