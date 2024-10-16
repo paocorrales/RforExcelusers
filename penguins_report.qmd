@@ -14,7 +14,7 @@ execute:
 #| label: setup
 
 library(tidyverse)
-library(readxl)
+library(gt)
 ```
 
 ## About the data
@@ -31,10 +31,18 @@ summary <- penguins %>%
   summarise(count = n(),
             mean_body_mass = round(mean(body_mass_g/1000, na.rm = TRUE), 2))
 
-summary %>% 
-  knitr::kable(col.names = c("Specie", "Count", "Mean Body Mass"),
-               align = "lcc",
-               caption = "Summary of penguins on the data set by species.")
+summary |> 
+  gt() |> 
+  cols_label(
+    species = "Specie",
+    count = "Count",
+    mean_body_mass = "Mean Body Mass"
+  ) |> 
+  cols_align(
+    align = "center",
+    columns = c(count, mean_body_mass)
+  ) |> 
+  tab_caption("Summary of penguins on the data set by species.")
 ```
 
 ### Gentoo penguins
