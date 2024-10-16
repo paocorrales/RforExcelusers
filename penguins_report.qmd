@@ -1,6 +1,9 @@
 ---
 title: "Gentoo Penguins"
-format: html
+format: 
+  html:
+    code-tools: 
+      source: true
 execute:
   echo: false
   warning: false
