@@ -65,7 +65,7 @@ penguins %>%
        color = "Penguin species") 
 ```
 
-Female and male penguins have differnet body mass. Male penguins generally are bigger than females. 
+Female and male penguins have different body mass. Male penguins generally are bigger than females. 
 
 ```{r}
 penguins %>% 
