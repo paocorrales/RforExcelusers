@@ -21,7 +21,8 @@ After you have everything installed, you'll need to install a few packages requi
 
 ```{r, eval=FALSE}
 install.packages("tidyverse")
-install.packages("palmerpenguins")
+install.packages("gt")
+install.packages("readxl")
 ```
 
 During the workshop we'll provide you with an RStudio project with all the files you'll need. Please make sure you have a software to unzip files. 
